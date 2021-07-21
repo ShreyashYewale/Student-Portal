@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const StudentSchema = new mongoose.Schema({
   username: {
@@ -74,4 +74,27 @@ const StudentSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('StudentSchema', StudentSchema);
+module.exports = mongoose.model("StudentSchema", StudentSchema);
+
+/*
+{
+    "username": "Sanket29",
+  "name": "Sanket Salunke",
+  "email": "sanket@gmail.com",
+  "college_name":"VIIT",
+  "academic_details": {
+    "year": 2021,
+    "division": "D",
+    "roll_no": 70,
+    "prn_no": 21232
+  },
+  "classes": [
+    {
+      "class_id": "C1",
+      "class_name": "JSP D3",
+      "faculty_name": "A. Paike"
+    }
+  ],
+  "password": "sanket123"
+}
+*/

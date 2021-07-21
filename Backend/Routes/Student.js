@@ -1,11 +1,19 @@
 const express = require("express");
-const { CreateAccount } = require("../Controllers/Student");
+const {
+  CreateAccount,
+  SignInStudent,
+  SignOutStudent,
+} = require("../Controllers/Student");
 const routes = express.Router();
 
 routes.get("/", (req, res) => {
-  res.json({ msg: "Admin API" });
+  res.json({ msg: "Student API" });
 });
 
-routes.get("/createaccount", CreateAccount);
+routes.post("/createaccount", CreateAccount);
+
+routes.post("/signin", SignInStudent);
+
+routes.get("/signout", SignOutStudent);
 
 module.exports = routes;
