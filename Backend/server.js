@@ -33,7 +33,7 @@ app.use(bodyParser.json());
 
 // // Setting Routes
 app.use("/admin", CollegeAdmin);
-// app.use("/faculty", Faculty);
+app.use("/faculty", Faculty);
 app.use("/student", Student);
 
 // Base Route
