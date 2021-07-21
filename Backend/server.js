@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 // // Setting Routes
 app.use("/admin", CollegeAdmin);
 // app.use("/faculty", Faculty);
-// app.use("/student", Student);
+app.use("/student", Student);
 
 // Base Route
 app.get("/", (req, res) => {
