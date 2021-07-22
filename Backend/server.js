@@ -38,7 +38,8 @@ app.use("/student", Student);
 
 // Base Route
 app.get("/", (req, res) => {
-  res.send(`API Listening on port: ${PORT}`);
+  console.log("Request Handled!");
+  res.json({ msg: `API Listening on port: ${PORT}` });
 });
 
 // Starting Server
