@@ -1,5 +1,7 @@
 const { validationResult } = require("express-validator");
 const Admin = require("../Models/CollegeAdmin");
+const Faculty = require("../Models/Faculty");
+const Student = require("../Models/Student");
 const jwt = require("jsonwebtoken");
 
 exports.CreateAccount = (req, res) => {
@@ -51,5 +53,33 @@ exports.SignOutAdmin = (req, res) => {
   res.clearCookie("token");
   res.json({
     message: "Admin Signout Successfully",
+  });
+};
+
+exports.FacultyList = (req, res) => {
+  Faculty.find({}, (err, result) => {
+    if (err) {
+      return res.status(400).json({ error: "Something went wrong!" });
+    }
+
+    if (result.length != 0) {
+      res.json(result);
+    } else {
+      res.json({ msg: "No data found!" });
+    }
+  });
+};
+
+exports.StudentList = (req, res) => {
+  Student.find({}, (err, result) => {
+    if (err) {
+      return res.status(400).json({ error: "Something went wrong!" });
+    }
+
+    if (result.length != 0) {
+      res.json(result);
+    } else {
+      res.json({ msg: "No data found!" });
+    }
   });
 };
