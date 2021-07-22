@@ -1,6 +1,7 @@
 const express = require("express");
 const {
   CreateAccount,
+  DeleteAccount,
   SignInStudent,
   SignOutStudent,
 } = require("../Controllers/Student");
@@ -11,6 +12,8 @@ routes.get("/", (req, res) => {
 });
 
 routes.post("/createaccount", CreateAccount);
+
+routes.post("/deleteaccount", DeleteAccount);
 
 routes.post("/signin", SignInStudent);
 

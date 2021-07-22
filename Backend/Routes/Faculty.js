@@ -1,19 +1,22 @@
-const express = require('express');
+const express = require("express");
 const {
   CreateAccount,
+  DeleteAccount,
   SignInFaculty,
   SignOutFaculty,
-} = require('../Controllers/Faculty');
+} = require("../Controllers/Faculty");
 const routes = express.Router();
 
-routes.get('/', (req, res) => {
-  res.json({ msg: 'Faculty API' });
+routes.get("/", (req, res) => {
+  res.json({ msg: "Faculty API" });
 });
 
-routes.post('/createaccount', CreateAccount);
+routes.post("/createaccount", CreateAccount);
 
-routes.post('/signin', SignInFaculty);
+routes.post("/deleteaccount", DeleteAccount);
 
-routes.get('/signout', SignOutFaculty);
+routes.post("/signin", SignInFaculty);
+
+routes.get("/signout", SignOutFaculty);
 
 module.exports = routes;

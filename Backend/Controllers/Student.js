@@ -20,6 +20,34 @@ exports.CreateAccount = (req, res) => {
   });
 };
 
+exports.DeleteAccount = (req, res) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ error: errors.array()[0].msg });
+  }
+
+  const { email } = req.body;
+
+  Student.findOne({ email }, (err, user) => {
+    if (err || !user) {
+      return res.status(400).json({
+        error: "USER email does not exists",
+      });
+    }
+
+    Student.remove({ email }, (err, result) => {
+      if (err || !result) {
+        return res.status(400).json({
+          error: "Failed to delete account",
+        });
+      }
+
+      res.json({ msg: "Account Deleted Successfully!", result });
+    });
+  });
+};
+
 exports.SignInStudent = (req, res) => {
   const errors = validationResult(req);
   const { email, password } = req.body;
