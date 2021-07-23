@@ -9,7 +9,8 @@ const Features = () => {
         <h3 style={{ color: '#000004', fontWeight: 600 }} className='mt-4'>
           Features
         </h3>
-      </center>
+          </center>
+          <div id="Home"></div>
       <Container className="mb-4">
         <div className='flex flex-wrap -m-4'>
           <Row className='ml-3 mt-4'>
