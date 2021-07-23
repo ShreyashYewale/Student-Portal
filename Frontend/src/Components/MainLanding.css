@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
-  min-height: 560px;
+  min-height: 660px;
 }
 
 .illustration {
@@ -12,7 +12,7 @@
   justify-content: center;
 }
 
-h2{
+h2 {
   color: #fff;
 }
 .illustration img {
