@@ -12,6 +12,9 @@
   justify-content: center;
 }
 
+h2{
+  color: #fff;
+}
 .illustration img {
   width: 400px;
   height: 400px;
