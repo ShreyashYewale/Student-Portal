@@ -2,7 +2,7 @@ import React from "react";
 import MainLanding from "../../Components/MainLanding";
 import Navbar from "../../Components/Navbar";
 
-const Header = () => {
+const Landing = () => {
   return (
     <div className="main-header">
       <Navbar />
@@ -11,4 +11,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Landing;

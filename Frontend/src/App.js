@@ -1,12 +1,14 @@
 import "./App.css";
-import Header from "./Routes/LandingPage/Header";
+import Landing from "./IndividualComponents/LandingPage/Landing";
 import Footer from "./Components/Footer";
-import Features from "./Components/Features";
+import Features from './Components/Features';
+import Contact from './Components/Contact';
 function App() {
   return (
     <div>
-      <Header />
-      <Features/>
+      <Landing />
+      <Features />
+      <Contact />
       <Footer />
     </div>
   );
