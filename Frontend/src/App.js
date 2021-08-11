@@ -1,16 +1,18 @@
 import "./App.css";
-import Landing from "./IndividualComponents/LandingPage/Landing";
-import Footer from "./Components/Footer";
-import Features from './Components/Features';
-import Contact from './Components/Contact';
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Homepage from "./Pages/Homepage";
+import SignIn from "./AuthComponents/SignIn";
+import SignUp from "./AuthComponents/SignUp";
 function App() {
   return (
-    <div>
-      <Landing />
-      <Features />
-      <Contact />
-      <Footer />
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/signup" exact component={SignUp} />
+        <Route path="/signin" exact component={SignIn} />
+        <Route path="/" exact component={Homepage} />
+      </Switch>
+    </Router>
   );
 }
 
