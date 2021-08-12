@@ -31,15 +31,14 @@ const Contact = () => {
         <div className="row align-items-center justify-content-between">
           <div className="col-md-6">
             <img
+              className="img-fluid w-75"
               alt="gallery"
-              src={process.env.PUBLIC_URL + "/Images/email.gif"}
+              src={
+                process.env.PUBLIC_URL + "/Images/contactus_illustration.svg"
+              }
               style={{
                 justifyItems: "center",
                 alignItems: "center",
-                float: "right",
-                width: 400,
-                height: 400,
-                marginRight: 40,
               }}
             />
           </div>

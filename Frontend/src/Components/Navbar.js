@@ -36,7 +36,6 @@ const Navbar = () => {
       document.getElementById("nav-ele5").style.color = "#000";
     }
   });
-
   return (
     <div>
       <a href="Home" />
