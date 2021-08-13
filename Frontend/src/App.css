@@ -3,8 +3,81 @@ body {
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
-
+/* MainLanding.js */
+.dummy-div {
+  padding: 10px;
+}
 .main-header {
   background-image: linear-gradient(45deg, #744ce6, #5092be);
+}
+.homepage-footer {
+  background-image: linear-gradient(45deg, #582dce, #3382b8);
+}
+.homepage-footer-bar {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.main-header .heading-title {
+  font-size: 60px;
+  transition: all 0.3s ease;
+}
+
+.main-heading-container {
+  padding: 130px 0px;
+}
+
+.features-container {
+  padding: 50px 80px !important;
+}
+
+/* SignIn Page */
+
+/* Media Queries */
+@media (max-width: 1130px) {
+  .dummy-div {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 1010px) {
+  .main-header .heading-title {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 767px) {
+  .main-heading-container {
+    padding: 80px 0px;
+  }
+  .features-container {
+    padding: 50px 60px !important;
+  }
+}
+
+@media (max-width: 580px) {
+  .features-container {
+    padding: 50px 40px !important;
+  }
+}
+
+@media (max-width: 389px) {
+  .features-container {
+    padding: 50px 50px;
+  }
+  .main-header .heading-title {
+    font-size: 41px;
+    transition: all 0.3s ease;
+  }
+}
+
+@media (max-width: 328px) {
+  .main-header .heading-title {
+    font-size: 35px;
+    transition: all 0.3s ease;
+  }
+  .main-header .homepage-header-btn {
+    width: 100px;
+  }
 }

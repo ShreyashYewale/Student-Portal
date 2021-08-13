@@ -2,8 +2,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="footer">
-      <div className="bg-dark p-4 text-white">
+    <div className="footer homepage-footer">
+      <div className="p-4 text-white">
         <div className="container">
           <div className="row py-3 text-center">
             <div className="col-md-6 align-content-center justify-content-between">
@@ -40,7 +40,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="bg-secondary p-3 text-center text-white lead">
+      <div className="p-3 text-center text-white lead homepage-footer-bar">
         Copyright &copy;2021-22
       </div>
     </div>

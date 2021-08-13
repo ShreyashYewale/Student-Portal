@@ -11,7 +11,6 @@ const Contact = () => {
             color: "#5f43bd",
             fontWeight: 600,
             fontSize: `40px`,
-            marginTop: `45px`,
           }}
         >
           <FontAwesomeIcon
@@ -27,8 +26,8 @@ const Contact = () => {
           Have Some Questions?
         </h3>
       </center>
-      <div className="container p-4 mb-5">
-        <div className="row align-items-center justify-content-between">
+      <div className="container p-4 mb-5 mt-4">
+        <div className="row text-center align-items-center justify-content-between">
           <div className="col-md-6">
             <img
               className="img-fluid w-75"
@@ -42,7 +41,7 @@ const Contact = () => {
               }}
             />
           </div>
-          <div className="col-md-6 text-center">
+          <div className="col-md-6 text-center align-items-center justify-content-between">
             <input
               className="form-control form-control-lg mt-4"
               type="text"
@@ -57,7 +56,7 @@ const Contact = () => {
               type="text"
               placeholder="Email"
               style={{
-                width: 400,
+                width: `100% !important`,
                 borderRadius: 10,
               }}
             />
@@ -66,7 +65,7 @@ const Contact = () => {
               type="Number"
               placeholder="Contact No"
               style={{
-                width: 400,
+                width: `100% !important`,
                 borderRadius: 10,
               }}
             />
@@ -74,18 +73,15 @@ const Contact = () => {
               className="form-control form-control-lg mt-4"
               type="text"
               placeholder="Description/Query"
-              multiple="true"
+              multiple={true}
               style={{
-                width: 400,
-                height: 100,
+                width: `100% !important`,
                 borderRadius: 10,
               }}
             />
             <button
-              className="mt-4"
+              className="mt-4 px-5 py-2"
               style={{
-                width: 280,
-                height: 50,
                 borderRadius: 10,
                 backgroundColor: "#5f43bd",
                 color: "#fff",

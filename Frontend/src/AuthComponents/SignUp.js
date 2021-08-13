@@ -1,15 +1,15 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const SignUp = () => {
   return (
     <div
       className="p-4"
       style={{
-        backgroundImage: `url('/Images/signin_background.png')`,
+        backgroundImage: `url('/Images/signin_background.svg')`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         width: `100vw`,
         height: `100vh`,
+        overflow: "hidden",
       }}
     >
       <div className="container-fluid">
@@ -29,7 +29,7 @@ const SignUp = () => {
               </div>
               <div className="mt-2 p-4 text-center align-items-center justify-content-between">
                 <button
-                  className="mt-2"
+                  className="mt-2 signin-google-button"
                   style={{
                     width: 280,
                     height: 50,
@@ -48,6 +48,7 @@ const SignUp = () => {
                     src="https://img.icons8.com/color/16/000000/google-logo.png"
                     width="20"
                     height="20"
+                    alt="google_logo"
                   ></img>
                   Sign in With Google
                 </button>
@@ -116,6 +117,7 @@ const SignUp = () => {
                     style={{
                       left: "80%",
                       textAlign: "center",
+                      textDecoration: "none",
                     }}
                   >
                     Already Registered?
@@ -125,6 +127,7 @@ const SignUp = () => {
                       color: "#d9c2ff",
                       paddingBottom: "2px",
                       borderBottom: "1px solid #d9c2ff",
+                      textDecoration: "none",
                     }}
                     href="/signin"
                   >
@@ -134,10 +137,10 @@ const SignUp = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-6 d-md-block d-sm-none text-center justify-content-between align-items-center">
+          <div className="col-md-6 d-md-block d-none text-center justify-content-between align-items-center">
             <img
-              className="img-fluid w-100"
-              src={process.env.PUBLIC_URL + "/Images/signin_backnew.png"}
+              className="img-fluid w-50"
+              src={process.env.PUBLIC_URL + "/Images/signin_illustration.svg"}
               alt=""
             />
           </div>
