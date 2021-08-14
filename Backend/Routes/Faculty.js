@@ -1,4 +1,5 @@
 const express = require('express');
+const { check, validationResult } = require('express-validator');
 const {
   CreateAccount,
   DeleteAccount,
@@ -12,7 +13,10 @@ routes.get('/', (req, res) => {
   res.json({ msg: 'Faculty API' });
 });
 
-routes.post('/createaccount', CreateAccount);
+routes.post(
+  '/createaccount',
+  CreateAccount
+);
 
 routes.post('/deleteaccount', DeleteAccount);
 
