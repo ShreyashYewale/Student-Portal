@@ -1,5 +1,25 @@
 import React from "react";
 const SignUp = () => {
+  const axios = require("axios");
+
+  const createAccount = () => {
+    console.log("Called");
+    axios
+      .post("/faculty/createaccount", {
+        username: "amey",
+        email: "ajay@gmail.com",
+        password: "amey",
+        college_name: "123",
+      })
+      .then((res) => {
+        const { data } = res;
+
+        console.log("account created successfully..!", data);
+      })
+      .catch((err) => {
+        console.log("account created unsuccessfully..!", err);
+      });
+  };
   return (
     <div
       className="p-4"
@@ -108,6 +128,7 @@ const SignUp = () => {
                     fontSize: 16,
                     marginTop: 40,
                   }}
+                  onClick={createAccount}
                 >
                   Create Account
                 </button>

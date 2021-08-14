@@ -12,6 +12,20 @@ body {
 .main-header {
   background-image: linear-gradient(45deg, #744ce6, #5092be);
 }
+.homepage-loader {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-image: linear-gradient(45deg, #582dce, #3382b8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+.hide-loader {
+  opacity: 0;
+  display: none;
+}
 .homepage-footer {
   background-image: linear-gradient(45deg, #582dce, #3382b8);
 }
@@ -32,6 +46,24 @@ body {
   padding: 50px 80px !important;
 }
 
+/* FAQ */
+.accordion-body {
+  background-color: #f7f7f7;
+}
+
+/* Carousel */
+.carousel-inner {
+  background: #f5f5f5;
+}
+.carousel-block {
+  min-height: 320px;
+}
+
+.carousel-image {
+  height: 150px;
+  width: 150px;
+  margin-bottom: 20px;
+}
 /* SignIn Page */
 
 /* Media Queries */
@@ -54,6 +86,9 @@ body {
   .features-container {
     padding: 50px 60px !important;
   }
+  .carousel-block {
+    min-height: 350px;
+  }
 }
 
 @media (max-width: 580px) {
@@ -69,6 +104,9 @@ body {
   .main-header .heading-title {
     font-size: 41px;
     transition: all 0.3s ease;
+  }
+  .carousel-block {
+    min-height: 380px;
   }
 }
 
