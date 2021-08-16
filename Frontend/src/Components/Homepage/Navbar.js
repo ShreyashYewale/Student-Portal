@@ -58,9 +58,9 @@ const Navbar = () => {
               </a>
             </li>
             <li className="nav-item">
-              <Link to="/signup">
+              <Link to="/signin">
                 <button type="button" className="btn btn-outline-light">
-                  Sign Up
+                  Sign In
                 </button>
               </Link>
             </li>
