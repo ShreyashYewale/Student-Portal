@@ -13,6 +13,10 @@ const Homepage = () => {
     }, 1000);
   }, []);
 
+  useEffect(() => {
+    console.log("Page Loading Changed..! ");
+  }, [isLoaded]);
+
   return (
     <div>
       {isLoaded ? (

@@ -10,7 +10,7 @@ const Navbar = () => {
       style={{ color: "#fff", backgroundColor: "#4e5fb6" }}
     >
       <div className="container-fluid px-3">
-        <a href="" className="navbar-brand">
+        <a href="#icon" className="navbar-brand">
           <span>
             <FontAwesomeIcon
               id="font1"
@@ -38,9 +38,7 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="nav-menu">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <a href="" className="nav-link">
-                Home
-              </a>
+              <a className="nav-link">Home</a>
             </li>
             <li className="nav-item">
               <a href="#questions" className="nav-link">

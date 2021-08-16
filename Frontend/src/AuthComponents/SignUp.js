@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 const axios = require("axios");
 const SignUp = () => {
@@ -88,12 +87,13 @@ const SignUp = () => {
       style={{
         backgroundImage: `url('/Images/signin_background.png')`,
         backgroundRepeat: "no-repeat",
+        overflow: "hidden",
         backgroundSize: "cover",
         width: `100vw`,
         height: `100vh`,
       }}
     >
-      <div className="container-fluid">
+      <div className="container-fluid align-items-center justify-content-between">
         <div className="row align-items-center justify-content-between">
           <div className="col-md-6">
             <div className="mt-1 align-items-center justify-content-between">
@@ -132,6 +132,7 @@ const SignUp = () => {
                     src="https://img.icons8.com/color/16/000000/google-logo.png"
                     width="20"
                     height="20"
+                    alt="logo"
                   ></img>
                   Sign in With Google
                 </button>
@@ -241,8 +242,8 @@ const SignUp = () => {
           </div>
           <div className="col-md-6 d-md-block d-sm-none text-center justify-content-between align-items-center">
             <img
-              className="img-fluid w-100"
-              src={process.env.PUBLIC_URL + "/Images/signin_backnew.png"}
+              className="img-fluid w-50"
+              src={process.env.PUBLIC_URL + "/Images/security_illustration.svg"}
               alt=""
             />
           </div>
