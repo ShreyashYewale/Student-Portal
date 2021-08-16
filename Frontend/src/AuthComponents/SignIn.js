@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import ReCAPTCHA from "react-google-recaptcha";
 const axios = require("axios");
 const SignIn = () => {
   const [values, setvalues] = useState({
     email: "",
-    username: "",
-    collegename: "",
     password: "",
-    error: "",
+    error: false,
     success: false,
+    message: "",
   });
-  const { email, username, collegename, password, error, success } = values;
+  const [isVerified, setisVerified] = useState(false);
+
+  const { email, username, collegename, password, error, success, message } =
+    values;
   const handleChange = (name) => (event) => {
     setvalues({ ...values, error: false, [name]: event.target.value });
   };
@@ -27,15 +30,15 @@ const SignIn = () => {
               height: "55px",
             }}
           >
-            <h6>
-              New account was created successfully{" "}
-              <Link to="/signin">Login Here</Link>
-            </h6>
+            <h6>Successfully Logged In</h6>
           </div>
         </div>
       </div>
     );
   };
+  function onIsVerified() {
+    setisVerified({ isVerified: true });
+  }
   const errorMessage = () => {
     return (
       <div className="row ">
@@ -48,39 +51,48 @@ const SignIn = () => {
             textAlign: "center",
           }}
         >
-          Unable to create account..!
+          {message}
         </div>
       </div>
     );
   };
   const onFormSubmit = (event) => {
     event.preventDefault();
-    setvalues({ ...values, error: false });
-
-    axios
-      .post("/admin/createaccount", {
-        username: username,
-        email: email,
-        password: password,
-        college_name: collegename,
-      })
-      .then(function (response) {
-        setvalues({
-          ...values,
-          email: "",
-          username: "",
-          collegename: "",
-          password: "",
-          error: "",
-          success: true,
-        });
-        const { data } = response;
-        console.log("Account Created Successfully", data);
-      })
-      .catch(function (error) {
-        setvalues({ ...values, error: true, success: false });
-        console.error("Account Creation Failed");
+    if (!isVerified) {
+      setvalues({
+        ...values,
+        error: true,
+        success: false,
+        message: "Please Verify that you are Not ROBOT",
       });
+    } else {
+      setvalues({ ...values, error: false });
+      axios
+        .post("/admin/signin", {
+          email: email,
+          password: password,
+        })
+        .then(function (response) {
+          setvalues({
+            ...values,
+            email: "",
+            password: "",
+            error: "",
+            success: true,
+          });
+          const { data } = response;
+          console.log("Successfully Signed In", data);
+        })
+        .catch(function (error) {
+          setvalues({
+            ...values,
+            error: true,
+            success: false,
+            message: "Please Enter Valid Credentials",
+          });
+          console.error("Please Enter valid credentials");
+        });
+    }
   };
   return (
     <div
@@ -157,35 +169,6 @@ const SignIn = () => {
                   ></input>
                   <input
                     className="form-control form-control-lg mt-4"
-                    type="text"
-                    required
-                    onChange={handleChange("username")}
-                    value={username}
-                    placeholder="UserName"
-                    style={{
-                      width: `350px`,
-                      borderRadius: 10,
-                      height: "35px",
-                      border: "1px solid #F3EFE0",
-                    }}
-                  ></input>
-                  <input
-                    className="form-control form-control-lg mt-4"
-                    type="text"
-                    onChange={handleChange("collegename")}
-                    value={collegename}
-                    required
-                    placeholder="College Name"
-                    style={{
-                      width: `350px`,
-                      borderRadius: 10,
-                      height: "35px",
-                      border: "1px solid #F3EFE0",
-                    }}
-                  ></input>
-
-                  <input
-                    className="form-control form-control-lg mt-4"
                     type="password"
                     pattern="^[^\r\n]*.{8,32}$"
                     title="Please Enter the valid Password between 8 to 32"
@@ -199,6 +182,12 @@ const SignIn = () => {
                       height: "35px",
                       border: "1px solid #F3EFE0",
                     }}
+                  />
+
+                  <ReCAPTCHA
+                    sitekey="6LcXLgMcAAAAAH_DXCYa_TGIU0qkDIHsvz0GKq3w"
+                    onChange={onIsVerified}
+                    className="align-items-center mt-4"
                   />
                 </center>
                 <button
