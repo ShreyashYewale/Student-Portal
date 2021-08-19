@@ -5,6 +5,7 @@ import {
   faBars,
   faChalkboardTeacher,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 const Navbar = () => {
   const [currentHeight, setCurrentHeight] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
@@ -56,7 +57,9 @@ const Navbar = () => {
                 onClick={handleSideMenu}
               />
             ) : (
-              <FontAwesomeIcon
+                <Link to="/">
+                <FontAwesomeIcon
+                  
                 id="font1"
                 icon={faChalkboardTeacher}
                 style={{
@@ -65,7 +68,7 @@ const Navbar = () => {
                   fontSize: `25px`,
                   marginRight: "20px",
                 }}
-              />
+              /></Link>
             )}
             Student Portal
           </span>

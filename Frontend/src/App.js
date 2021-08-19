@@ -6,15 +6,16 @@ import Homepage from "./Pages/Homepage";
 import SignIn from "./AuthComponents/SignIn";
 import SignUp from "./AuthComponents/SignUp";
 import Grouppage from "./Pages/Grouppage";
-
+import MainDashboard from "./Dashboard/MainDashboard";
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/signup" exact component={SignUp} />
-        <Route path="/signin" exact component={SignIn} />
-        <Route path="/group" exact component={Grouppage} />
-        <Route path="/" exact component={Homepage} />
+        <Route path='/signup' exact component={SignUp} />
+        <Route path='/signin' exact component={SignIn} />
+        <Route path='/group' exact component={Grouppage} />
+        <Route path='/dashboard' exact component={MainDashboard} />
+        <Route path='/' exact component={Homepage} />
       </Switch>
     </Router>
   );

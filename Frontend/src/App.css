@@ -66,6 +66,7 @@ body {
 .carousel-block {
   min-height: 320px;
 }
+/*Sign In*/
 
 .carousel-image {
   height: 150px;
@@ -270,6 +271,9 @@ body {
   }
   .default-content-title {
     top: 15px;
+  }
+  .sign-in {
+    width: 50px;
   }
 }
 
