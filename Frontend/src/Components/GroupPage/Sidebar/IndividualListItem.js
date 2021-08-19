@@ -5,7 +5,6 @@ import { GroupContext } from "../../../Context/Context";
 
 const IndividualListItem = ({ title, icon }) => {
   const { setCurrentSelectedOption } = useContext(GroupContext);
-
   return (
     <a
       href={`#${title}`}

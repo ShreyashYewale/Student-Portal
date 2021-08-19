@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Link,Redirect} from 'react-router-dom';
+import React, { useState, useEffect,useContext } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { AppContext } from '../Context/Context';
 const axios = require('axios');
+
 const SignIn = () => {
+  
   const [values, setvalues] = useState({
     email: '',
     password: '',
@@ -12,7 +15,7 @@ const SignIn = () => {
     redirect: false
   });
   const [isVerified, setisVerified] = useState(false);
-
+  const { currentUser, setcurrentUser } = useContext(AppContext);
   const { email, password, error, success, message,redirect } =
     values;
   const handleChange = (name) => (event) => {
@@ -64,6 +67,11 @@ const SignIn = () => {
   }
   const onFormSubmit = (event) => {
     event.preventDefault();
+   setcurrentUser((prevState) => ({
+     ...prevState,
+     username: 'Shreyash'
+   }));
+     console.log(currentUser);
     const selectrole = document.querySelector("#selectrole")
     let role='';
     if (selectrole.value === 'Admin')

@@ -6,7 +6,7 @@ import {
   faChalkboardTeacher
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-const Navbar = () => {
+const Navbar1 = () => {
   const [currentHeight, setCurrentHeight] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -69,7 +69,7 @@ const Navbar = () => {
                     }}
                   />
                 </Link>
-                Student Portal
+                Admin Dashboard
               </div>
             )}
           </span>
@@ -92,4 +92,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar1;
