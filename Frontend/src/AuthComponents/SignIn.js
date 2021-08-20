@@ -65,13 +65,11 @@ const SignIn = () => {
         return(<Redirect to="/dashboard"></Redirect>)
       }
   }
+ 
   const onFormSubmit = (event) => {
+     setcurrentUser({ username: 'Shreyash' });
+     console.log(currentUser.username);
     event.preventDefault();
-   setcurrentUser((prevState) => ({
-     ...prevState,
-     username: 'Shreyash'
-   }));
-     console.log(currentUser);
     const selectrole = document.querySelector("#selectrole")
     let role='';
     if (selectrole.value === 'Admin')
