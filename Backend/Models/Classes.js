@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const ClassesSchema = new mongoose.Schema([
   {
+    // TODO: faculty_name: who have created the class
     class_id: { type: Number, required: true, unique: true, maxlength: 20 },
     class_name: { type: String, required: true, maxlength: 20 },
     asignments: [
@@ -28,6 +29,7 @@ const ClassesSchema = new mongoose.Schema([
         ],
       },
     ],
+    // TODO: add students joined list
     discussion: [
       {
         message_id: {

@@ -1,19 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Content from "../Components/GroupPage/Content";
 import Navbar from "../Components/GroupPage/Navbar";
 
 // Context
-import { GroupContext } from "../Context/Context";
+import { GroupContext, AppContext } from "../Context/Context";
 
 const Grouppage = () => {
+  const { currentUser } = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(false);
   const [currentSelectedOption, setCurrentSelectedOption] = useState(null);
+  const history = useHistory();
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(true);
-    }, 1000);
+    console.log("Hello");
+    if (!currentUser.isLogin) {
+      history.push("/signin/");
+    } else {
+      setTimeout(() => {
+        setIsLoading(true);
+      }, 1000);
+    }
   }, []);
+
   return (
     <div>
       {isLoading ? (
