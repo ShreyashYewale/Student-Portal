@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import SignUp from '../../AuthComponents/SignUp'
+import SignUp from '../../AuthComponents/SignUp';
+import Profile from './Options/Profile';
+import ManageStudent from './Options/ManageStudent';
 // Context
 import { DashboardContext } from '../../Context/Context';
-
 
 const MainContentPane1 = () => {
   const { currentSelectedOption } = useContext(DashboardContext);
@@ -20,17 +21,23 @@ const MainContentPane1 = () => {
         <div className='default-content-container align-items-center justify-content-between'>
           {currentSelectedOption === null ? (
             <h1>Home Page</h1>
+          ) : currentSelectedOption === 'Profile' ? (
+            <Profile />
           ) : currentSelectedOption === 'Create Account' ? (
             <SignUp/>
-          ) : currentSelectedOption === 'Chat' ? (
-            <h1>Notes</h1>
-          ) : currentSelectedOption === 'Notes' ? (
-            <h1>Notes</h1>
-          ) : currentSelectedOption === 'Attendance' ? (
+          ) : currentSelectedOption === 'Manage Student' ? (
+            <ManageStudent/>
+          ) : currentSelectedOption === 'Manage Faculty' ? (
             <h1>Attendance</h1>
-          ) : currentSelectedOption === 'Progress' ? (
+          ) : currentSelectedOption === 'Attendance' ? (
             <h1>Progress</h1>
-          ) : currentSelectedOption === 'Links' ? (
+          ) : currentSelectedOption === 'Classes' ? (
+            <h1>Links</h1>
+          ) : currentSelectedOption === 'Courses' ? (
+            <h1>Links</h1>
+          ) : currentSelectedOption === 'Handle Queries' ? (
+            <h1>Links</h1>
+          ) : currentSelectedOption === 'Logout' ? (
             <h1>Links</h1>
           ) : (
             'Item selected'

@@ -13,10 +13,7 @@ routes.get('/', (req, res) => {
   res.json({ msg: 'Faculty API' });
 });
 
-routes.post(
-  '/createaccount',
-  CreateAccount
-);
+routes.post('/createaccount', CreateAccount);
 
 routes.post('/deleteaccount', DeleteAccount);
 
