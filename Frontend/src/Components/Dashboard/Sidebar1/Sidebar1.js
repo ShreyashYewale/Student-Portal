@@ -3,7 +3,7 @@ import IndividualListItems1 from "./IndividualListItems1";
 import { AppContext } from "../../../Context/Context";
 
 const Sidebar1 = () => {
-  const { currentUser } = useContext(AppContext);
+  const { currentUser} = useContext(AppContext);
 
   const handleLogout = () => {
     console.log("Request Logout");

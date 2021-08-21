@@ -11,11 +11,6 @@ const StudentSchema = new mongoose.Schema(
       data: Buffer,
       contentType: String
     },
-    name: {
-      type: String,
-      required: true,
-      maxlength: 30
-    },
     email: {
       type: String,
       required: true,

@@ -6,7 +6,7 @@ const Content1 = () => {
   return (
     <div className='grouppage-main-content-container'>
       <Sidebar1 />
-      <MainContentPane1 />
+      <MainContentPane1/>
     </div>
   );
 };

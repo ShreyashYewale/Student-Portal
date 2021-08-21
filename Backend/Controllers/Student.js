@@ -12,11 +12,11 @@ exports.CreateAccount = (req, res) => {
 
   const student = new Student(req.body);
 
-  student.save((err, student) => {
+  student.save((err, result) => {
     if (err) {
       return res.status(400).json({ err: "NOT able to save user in DB" });
     }
-    res.json(student);
+    res.json(result);
   });
 };
 
