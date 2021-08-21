@@ -43,22 +43,44 @@ const Sidebar1 = () => {
         ) : currentUser.role === "Faculty" ? (
           <>
             <IndividualListItems1
-              title="Manage Student"
+              title="Profile"
+              icon="bi bi-person-circle icons"
+            />
+            <IndividualListItems1 title="Classes" icon="bi bi-book icons" />
+            <IndividualListItems1 title="Courses" icon="bi bi-bookmark icons" />
+            <IndividualListItems1 title="Queries" icon="bi bi-chat icons" />
+            <IndividualListItems1
+              title="Attendance"
+              icon="bi bi-calendar-check icons"
+            />
+            <IndividualListItems1
+              title="Feedback"
               icon="bi bi-person-lines-fill icons"
             />
           </>
         ) : currentUser.role === "Student" ? (
           <>
             <IndividualListItems1
-              title="Handle Queries"
-              icon="bi bi-chat icons"
+              title="Profile"
+              icon="bi bi-person-circle icons"
+            />
+            <IndividualListItems1 title="Classes" icon="bi bi-book icons" />
+            <IndividualListItems1 title="Courses" icon="bi bi-bookmark icons" />
+            <IndividualListItems1 title="Queries" icon="bi bi-chat icons" />
+            <IndividualListItems1
+              title="Attendance"
+              icon="bi bi-calendar-check icons"
+            />
+            <IndividualListItems1
+              title="Feedback"
+              icon="bi bi-person-lines-fill icons"
             />
           </>
         ) : (
           ""
         )}
         <IndividualListItems1
-          title="Logout"
+          title="Logout"  
           icon="bi bi-arrow-clockwise icons"
         />
       </div>

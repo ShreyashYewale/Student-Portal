@@ -1,11 +1,36 @@
-import React, { useContext, useEffect, useState } from 'react';
-import SignUp from '../../AuthComponents/SignUp'
+import React, { useContext, useEffect, useState } from "react";
 // Context
-import { DashboardContext } from '../../Context/Context';
+import { AppContext, DashboardContext } from "../../Context/Context";
 
+// Admin Components
+import SignUp from "../../AuthComponents/SignUp";
+import AdminProfile from "./Admin/AdminProfile";
+import AdminManageStudent from "./Admin/AdminManageStudent";
+import AdminManageFaculty from "./Admin/AdminManageFaculty";
+import AdminAttendance from "./Admin/AdminAttendance";
+import AdminClasses from "./Admin/AdminClasses";
+import AdminCourses from "./Admin/AdminCourses";
+import AdminHandleQueries from "./Admin/AdminHandleQueries";
 
+// Faculty Components
+import FacultyProfile from "./Faculty/FacultyProfile";
+import FacultyClasses from "./Faculty/FacultyClasses";
+import FacultyQueries from "./Faculty/FacultyQueries";
+import FacultyCourses from "./Faculty/FacultyCourses";
+import FacultyAttendance from "./Faculty/FacultyAttendance";
+import FacultyFeedback from "./Faculty/FacultyFeedback";
+
+// Student Components
+import StudentProfile from "./Student/StudentProfile";
+import StudentClasses from "./Student/StudentClasses";
+import StudentQueries from "./Student/StudentQueries";
+import StudentCourses from "./Student/StudentCourses";
+import StudentAttendance from "./Student/StudentAttendance";
+import StudentFeedback from "./Student/StudentFeedback";
 const MainContentPane1 = () => {
   const { currentSelectedOption } = useContext(DashboardContext);
+  const { currentUser } = useContext(AppContext);
+
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -15,34 +40,85 @@ const MainContentPane1 = () => {
   }, []);
 
   return (
-    <div className='contents-container'>
+    <div className="contents-container">
       {isLoaded ? (
-        <div className='default-content-container align-items-center justify-content-between'>
-          {currentSelectedOption === null ? (
-            <h1>Home Page</h1>
-          ) : currentSelectedOption === 'Create Account' ? (
-            <SignUp/>
-          ) : currentSelectedOption === 'Chat' ? (
-            <h1>Notes</h1>
-          ) : currentSelectedOption === 'Notes' ? (
-            <h1>Notes</h1>
-          ) : currentSelectedOption === 'Attendance' ? (
-            <h1>Attendance</h1>
-          ) : currentSelectedOption === 'Progress' ? (
-            <h1>Progress</h1>
-          ) : currentSelectedOption === 'Links' ? (
-            <h1>Links</h1>
+        <div className="default-content-container align-items-center justify-content-between">
+          {currentUser.role === "Admin" ? (
+            <>
+              {currentSelectedOption === null ? (
+                <h1>Admin Default Page</h1>
+              ) : currentSelectedOption === "Admin Profile" ? (
+                <AdminProfile />
+              ) : currentSelectedOption === "Admin Create Account" ? (
+                <SignUp />
+              ) : currentSelectedOption === "Admin Manage Student" ? (
+                <AdminManageStudent />
+              ) : currentSelectedOption === "Admin Manage Faculty" ? (
+                <AdminManageFaculty />
+              ) : currentSelectedOption === "Admin Attendance" ? (
+                <AdminAttendance />
+              ) : currentSelectedOption === "Admin Classes" ? (
+                <AdminClasses />
+              ) : currentSelectedOption === "Admin Courses" ? (
+                <AdminCourses />
+              ) : currentSelectedOption === "Admin Handle Queries" ? (
+                <AdminHandleQueries />
+              ) : (
+                "Admin Invalid Item Selected"
+              )}
+            </>
+          ) : currentUser.role === "Faculty" ? (
+            <>
+              {currentSelectedOption === null ? (
+                <h1>Faculty Default Page</h1>
+              ) : currentSelectedOption === "Faculty Profile" ? (
+                <FacultyProfile />
+              ) : currentSelectedOption === "Faculty Classes" ? (
+                <FacultyClasses />
+              ) : currentSelectedOption === "Faculty Queries" ? (
+                <FacultyQueries />
+              ) : currentSelectedOption === "Faculty Courses" ? (
+                <FacultyCourses />
+              ) : currentSelectedOption === "Faculty Attendance" ? (
+                <FacultyAttendance />
+              ) : currentSelectedOption === "Faculty Feedback" ? (
+                <FacultyFeedback />
+              ) : (
+                "Faculty Invalid Item Selected"
+              )}
+            </>
+          ) : currentUser.role === "Student" ? (
+            <>
+              {currentSelectedOption === null ? (
+                <h1>Student Default Page</h1>
+              ) : currentSelectedOption === "Student Profile" ? (
+                <StudentProfile />
+              ) : currentSelectedOption === "Student Classes" ? (
+                <StudentClasses />
+              ) : currentSelectedOption === "Student Queries" ? (
+                <StudentQueries />
+              ) : currentSelectedOption === "Student Courses" ? (
+                <StudentCourses />
+              ) : currentSelectedOption === "Student Attendance" ? (
+                <StudentAttendance />
+              ) : currentSelectedOption === "Student Feedback" ? (
+                <StudentFeedback />
+              ) : (
+                "Student Invalid Item Selected"
+              )}
+            </>
           ) : (
-            'Item selected'
+            ""
           )}
         </div>
       ) : (
-        <div className='content-loader-container'>
+        <div className="content-loader-container">
           <div
-            className='spinner-border text-dark'
+            className="spinner-border text-dark"
             style={{ width: `3rem`, height: `3rem` }}
-            role='status'>
-            <span className='visually-hidden'>Loading...</span>
+            role="status"
+          >
+            <span className="visually-hidden">Loading...</span>
           </div>
         </div>
       )}

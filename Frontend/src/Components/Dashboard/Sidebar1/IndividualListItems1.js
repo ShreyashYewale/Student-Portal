@@ -15,17 +15,33 @@ const IndividualListItems1 = ({ title, icon }) => {
       setcurrentUser({ isLogin: false });
       history.push("/");
     } else {
-      setCurrentSelectedOption(title);
+      console.log(currentUser.role + " " + title);
+      setCurrentSelectedOption(currentUser.role + " " + title);
     }
   };
   return (
-    <a
-      className="list-group-item list-group-item-action list-group-item-light"
-      onClick={() => onItemSelected()}
-    >
-      <i className={icon}></i>
-      <span className="mb-1">{title}</span>
-    </a>
+    <>
+      {title === "Logout" ? (
+        <a
+          className="list-group-item list-group-item-action list-group-item-light"
+          style={{ cursor: "pointer" }}
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+        >
+          <i className={icon}></i>
+          <span className="mb-1">{title}</span>
+        </a>
+      ) : (
+        <a
+          className="list-group-item list-group-item-action list-group-item-light"
+          style={{ cursor: "pointer" }}
+          onClick={() => onItemSelected()}
+        >
+          <i className={icon}></i>
+          <span className="mb-1">{title}</span>
+        </a>
+      )}
+    </>
   );
 };
 
