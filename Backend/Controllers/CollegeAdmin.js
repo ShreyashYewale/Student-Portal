@@ -21,6 +21,29 @@ exports.CreateAccount = (req, res) => {
   });
 };
 
+exports.UpdateAdminInfo = (req, response) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ error: errors.array()[0].msg });
+  }
+
+  const id = req.body._id;
+  const updateData = {
+    $set: {
+      username: req.body.username,
+      college_name: req.body.college_name,
+    },
+  };
+
+  Admin.updateOne({ _id: id }, updateData, (err, res) => {
+    if (err) {
+      return response.status(422).json({ msg: err });
+    }
+    return response.json(res);
+  });
+};
+
 exports.SignInAdmin = (req, res) => {
   const errors = validationResult(req);
   const { email, password } = req.body;

@@ -1,24 +1,30 @@
-const express = require('express');
+const express = require("express");
 const {
   CreateAccount,
   SignInAdmin,
   SignOutAdmin,
   FacultyList,
-  StudentList
-} = require('../Controllers/CollegeAdmin');
+  StudentList,
+  UpdateStudentInfo,
+  UpdateFacultyInfo,
+  UpdateAdminInfo,
+} = require("../Controllers/CollegeAdmin");
 const routes = express.Router();
 
-routes.get('/', (req, res) => {
-  res.json({ msg: 'College Admin API' });
+routes.get("/", (req, res) => {
+  res.json({ msg: "College Admin API" });
 });
 
-routes.post('/createaccount', CreateAccount);
+routes.post("/createaccount", CreateAccount);
 
-routes.post('/signin', SignInAdmin);
+routes.put("/updateadmininfo", UpdateAdminInfo);
 
-routes.get('/signout', SignOutAdmin);
-routes.get('/facultylist', FacultyList);
+routes.post("/signin", SignInAdmin);
 
-routes.get('/studentlist', StudentList);
+routes.get("/signout", SignOutAdmin);
+
+routes.get("/facultylist", FacultyList);
+
+routes.get("/studentlist", StudentList);
 
 module.exports = routes;

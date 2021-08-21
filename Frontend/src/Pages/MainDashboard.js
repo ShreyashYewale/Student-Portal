@@ -8,12 +8,20 @@ import { AppContext } from "../Context/Context";
 import { useHistory } from "react-router-dom";
 
 const MainDashboard = () => {
-  const { currentUser } = useContext(AppContext);
+  const { currentUser, setcurrentUser } = useContext(AppContext);
 
   const [loading, setLoading] = useState(false);
   const [currentSelectedOption, setCurrentSelectedOption] = useState(null);
 
   const history = useHistory();
+
+  const handleLogout = () => {
+    console.log("Request For Logout");
+    setcurrentUser({ isLogin: false });
+    history.entries = [];
+    history.index = -1;
+    history.push("/");
+  };
 
   useEffect(() => {
     if (!currentUser.isLogin) {
@@ -58,7 +66,11 @@ const MainDashboard = () => {
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">
-                      Modal title
+                      <i
+                        class="bi bi-exclamation-triangle fs-4"
+                        style={{ marginRight: `5px` }}
+                      ></i>
+                      Alert
                     </h5>
                     <button
                       type="button"
@@ -67,17 +79,22 @@ const MainDashboard = () => {
                       aria-label="Close"
                     ></button>
                   </div>
-                  <div class="modal-body">...</div>
+                  <div class="modal-body">Do you want to logout?</div>
                   <div class="modal-footer">
                     <button
                       type="button"
-                      class="btn btn-secondary"
+                      class="btn btn-success"
+                      onClick={handleLogout}
                       data-bs-dismiss="modal"
                     >
-                      Close
+                      Yes
                     </button>
-                    <button type="button" class="btn btn-primary">
-                      Understood
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      data-bs-dismiss="modal"
+                    >
+                      No
                     </button>
                   </div>
                 </div>

@@ -48,6 +48,10 @@ exports.DeleteAccount = (req, res) => {
   });
 };
 
+exports.UpdateStudentInfo = (req, res) => {
+  res.json({ msg: "Update Student Info" });
+};
+
 exports.SignInStudent = (req, res) => {
   const errors = validationResult(req);
   const { email, password } = req.body;

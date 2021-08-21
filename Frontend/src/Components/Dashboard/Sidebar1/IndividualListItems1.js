@@ -10,14 +10,8 @@ const IndividualListItems1 = ({ title, icon }) => {
   const history = useHistory();
 
   const onItemSelected = () => {
-    if (title === "Logout") {
-      console.log("Request For Logout");
-      setcurrentUser({ isLogin: false });
-      history.push("/");
-    } else {
-      console.log(currentUser.role + " " + title);
-      setCurrentSelectedOption(currentUser.role + " " + title);
-    }
+    console.log(currentUser.role + " " + title);
+    setCurrentSelectedOption(currentUser.role + " " + title);
   };
   return (
     <>

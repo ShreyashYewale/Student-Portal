@@ -1,25 +1,38 @@
-const express = require('express');
-const { check, validationResult } = require('express-validator');
+const express = require("express");
+const { check, validationResult } = require("express-validator");
 const {
   CreateAccount,
   DeleteAccount,
   SignInFaculty,
   SignOutFaculty,
-  StudentsList
-} = require('../Controllers/Faculty');
+  StudentsList,
+  UpdateFacultyInfo,
+} = require("../Controllers/Faculty");
 const routes = express.Router();
 
-routes.get('/', (req, res) => {
-  res.json({ msg: 'Faculty API' });
-});
+// Use of middleware
+routes.get(
+  "/",
+  (req, res, next) => {
+    console.log("Request For Faculty");
+    if (req.body._id) next();
+    else res.json({ msg: "Unauthorized person" });
+  },
+  (req, res, next) => {
+    res.json({ msg: "Faculty API" });
+    next();
+  }
+);
 
-routes.post('/createaccount', CreateAccount);
+routes.post("/createaccount", CreateAccount);
 
-routes.post('/deleteaccount', DeleteAccount);
+routes.post("/deleteaccount", DeleteAccount);
 
-routes.post('/signin', SignInFaculty);
+routes.put("/updatefacultyinfo", UpdateFacultyInfo);
 
-routes.get('/signout', SignOutFaculty);
+routes.post("/signin", SignInFaculty);
 
-routes.get('/studentslist', StudentsList);
+routes.get("/signout", SignOutFaculty);
+
+routes.get("/studentslist", StudentsList);
 module.exports = routes;
