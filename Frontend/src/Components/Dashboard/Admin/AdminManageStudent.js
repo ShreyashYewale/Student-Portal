@@ -1,11 +1,7 @@
 import React from "react";
-
+const axios = require("axios");
 const AdminManageStudent = () => {
-  return (
-    <div>
-      <h1>Admin Manage Student</h1>
-    </div>
-  );
+  return <div>axios.get('/admin/studentlist');</div>;
 };
 
 export default AdminManageStudent;
