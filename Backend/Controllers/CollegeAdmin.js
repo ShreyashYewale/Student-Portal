@@ -80,17 +80,22 @@ exports.SignOutAdmin = (req, res) => {
 };
 
 exports.FacultyList = (req, res) => {
-  Faculty.find({}, (err, result) => {
-    if (err) {
-      return res.status(400).json({ error: "Something went wrong!" });
-    }
+  Faculty.find(
+    {},
+    "_id username email college_name createdAt updatedAt",
+    { sort: { username: 1 } },
+    (err, result) => {
+      if (err) {
+        return res.status(400).json({ error: "Something went wrong!" });
+      }
 
-    if (result.length != 0) {
-      res.json(result);
-    } else {
-      res.json({ msg: "No data found!" });
+      if (result.length != 0) {
+        res.json(result);
+      } else {
+        res.json({ msg: "No data found!" });
+      }
     }
-  });
+  );
 };
 
 exports.StudentList = (req, res) => {
