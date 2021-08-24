@@ -1,0 +1,42 @@
+/* Manage Student */
+.manage-container {
+  background-color: #333;
+  padding: 1px 5px;
+}
+
+.manage-item {
+  background-color: #fff;
+  text-decoration: none;
+  list-style-type: none;
+  margin: 5px 0px;
+  background-color: #f3f3f3;
+  overflow: hidden;
+}
+
+.manage-item .main-details {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.manage-item .more-details {
+  padding: 0px;
+  background-color: cyan;
+  transition: all 0.3s ease;
+  height: 0px;
+  overflow: hidden;
+}
+
+.manage-item .index {
+  flex: 0.04;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.manage-item .enable-disable-btn {
+  margin-right: 10px;
+}
+.manage-item .username {
+  flex: 1;
+}

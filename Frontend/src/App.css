@@ -124,6 +124,7 @@ body {
   height: 88.6vh;
   background-color: #f5f5f5;
   transition: all 0.5s ease-in-out;
+  overflow-y: scroll;
 }
 .content-loader-container {
   width: 100%;
