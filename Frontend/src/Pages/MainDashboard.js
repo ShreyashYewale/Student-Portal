@@ -41,9 +41,9 @@ const MainDashboard = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ overflowY: "hidden" }}>
       {loading ? (
-        <div>
+        <div style={{ overflowY: "hidden" }}>
           <DashboardContext.Provider
             value={{
               currentSelectedOption,

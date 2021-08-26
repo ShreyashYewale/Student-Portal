@@ -5,9 +5,9 @@ const {
   SignOutAdmin,
   FacultyList,
   StudentList,
-  UpdateStudentInfo,
-  UpdateFacultyInfo,
   UpdateAdminInfo,
+  DeleteStudent,
+  ManageStudentBlocking,
 } = require("../Controllers/CollegeAdmin");
 const routes = express.Router();
 
@@ -26,5 +26,9 @@ routes.get("/signout", SignOutAdmin);
 routes.get("/facultylist", FacultyList);
 
 routes.get("/studentlist", StudentList);
+
+routes.post("/deletestudent", DeleteStudent);
+
+routes.put("/managestudentblocking", ManageStudentBlocking);
 
 module.exports = routes;

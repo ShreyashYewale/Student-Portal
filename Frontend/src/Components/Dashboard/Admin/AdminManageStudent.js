@@ -55,11 +55,103 @@ const AdminManageStudent = () => {
       item.style.height = `100px`;
     }
   };
+
+  const DeleteStudent = (item) => {
+    console.log(item._id);
+    axios
+      .post("/admin/deletestudent", {
+        _id: item._id,
+        email: item.email,
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.data.deletedCount !== 0) {
+          // Record Deleted
+          setStudentData([
+            ...studentData.filter((subitem) => subitem.email !== item.email),
+          ]);
+
+          setDisplayStudentData([
+            ...displayStudentData.filter(
+              (subitem) => subitem.email !== item.email
+            ),
+          ]);
+        } else {
+          // Record Not Deleted
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const manageBlocking = (item) => {
+    console.log("Manage Blocking");
+    axios
+      .put("/admin/managestudentblocking", {
+        _id: item._id,
+        email: item.email,
+        setIsBlocked: !item.isBlocked,
+      })
+      .then((res) => {
+        if (res.data.nModified !== 0) {
+          const replaceData = {
+            college_name: item.college_name,
+            createdAt: item.createdAt,
+            email: item.email,
+            isBlocked: !item.isBlocked,
+            updatedAt: item.updatedAt,
+            username: item.username,
+            _id: item._id,
+          };
+
+          setStudentData([
+            ...studentData.filter((subitem) => subitem._id !== item._id),
+            replaceData,
+          ]);
+
+          /*
+          setDisplayStudentData([
+            ...displayStudentData.filter((subitem) => {
+              if (subitem._id === item._id) {
+                return {
+                  ...subitem,
+                  isBlocked: !subitem.isBlocked,
+                };
+              }
+              return subitem;
+            }),
+            replaceData,
+          ]);
+          */
+          for (var i = 0; i < displayStudentData.length; i++) {
+            if (displayStudentData[i]._id === item._id) {
+              setDisplayStudentData([
+                ...displayStudentData.filter(
+                  (subitem) => subitem._id !== item._id
+                ),
+                replaceData,
+              ]);
+              console.log("Code Executed");
+              break;
+            }
+          }
+        } else {
+          console.log("No Data Updated");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div>
-      <div className="admin-data container p-4">
-        <form onSubmit={handleSearch}>
-          <div class="input-group mb-3">
+      <div className="admin-data container">
+        <form
+          onSubmit={handleSearch}
+          className="p-4 align-items-center justify-content-center"
+        >
+          <div class="input-group">
             <input
               id="admin-manage-student-textfield"
               type="text"
@@ -83,18 +175,26 @@ const AdminManageStudent = () => {
                 <li
                   key={index}
                   className="manage-item"
-                  onClick={(e) => toggleMoreInfoSection(e)}
+                  // onClick={(e) => toggleMoreInfoSection(e)}
                 >
                   <div className="main-details">
                     <div className="index">{index + 1}.</div>
                     <div className="username">{item.username}</div>
                     <div className="enable-disable-btn">
-                      <button className="btn btn-primary btn-sm">
-                        Disable
+                      <button
+                        className="btn btn-primary btn-sm"
+                        onClick={() => manageBlocking(item)}
+                      >
+                        {item.isBlocked === true ? "Unblock" : "Block"}
                       </button>
                     </div>
                     <div className="delete-btn">
-                      <button className="btn btn-danger btn-sm">Delete</button>
+                      <button
+                        className="btn btn-danger btn-sm"
+                        onClick={() => DeleteStudent(item)}
+                      >
+                        Delete
+                      </button>
                     </div>
                   </div>
                   <div className="more-details">email: {item.email}</div>
