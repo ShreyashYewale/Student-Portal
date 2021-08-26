@@ -34,7 +34,7 @@ const Sidebar1 = () => {
               icon="bi bi-calendar-check icons"
             />
             <IndividualListItems1 title="Classes" icon="bi bi-book icons" />
-            <IndividualListItems1 title="Courses" icon="bi bi-bookmark icons" />
+            <IndividualListItems1 title="Add Courses" icon="bi bi-bookmark icons" />
             <IndividualListItems1
               title="Handle Queries"
               icon="bi bi-chat icons"

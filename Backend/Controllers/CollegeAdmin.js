@@ -2,6 +2,7 @@ const { validationResult } = require("express-validator");
 const Admin = require("../Models/CollegeAdmin");
 const Faculty = require("../Models/Faculty");
 const Student = require("../Models/Student");
+const Course=require("../Models/Courses");
 const jwt = require("jsonwebtoken");
 
 exports.CreateAccount = (req, res) => {
@@ -111,3 +112,34 @@ exports.StudentList = (req, res) => {
     }
   });
 };
+
+exports.AddCourses = (req, res) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ error: errors.array()[0].msg });
+  }
+
+  const courses = new Course(req.body);
+
+  courses.save((err, result) => {
+    if (err) {
+      return res.status(400).json({ err: 'NOT able to create course' });
+    }
+    res.json(result);
+  });
+}
+
+exports.getAllCourses = (req, res) => {
+   Course.find({}, (err, result) => {
+     if (err) {
+       return res.status(400).json({ error: 'Something went wrong!' });
+     }
+
+     if (result.length != 0) {
+       res.json(result);
+     } else {
+       res.json({ msg: 'No data found!' });
+     }
+   });
+}

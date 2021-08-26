@@ -8,6 +8,8 @@ const {
   UpdateStudentInfo,
   UpdateFacultyInfo,
   UpdateAdminInfo,
+  AddCourses,
+  getAllCourses
 } = require("../Controllers/CollegeAdmin");
 const routes = express.Router();
 
@@ -26,5 +28,8 @@ routes.get("/signout", SignOutAdmin);
 routes.get("/facultylist", FacultyList);
 
 routes.get("/studentlist", StudentList);
+
+routes.post("/addcourses", AddCourses);
+routes.get("/getallcourses",getAllCourses);
 
 module.exports = routes;

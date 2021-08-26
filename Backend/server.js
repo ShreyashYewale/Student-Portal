@@ -29,8 +29,7 @@ const Student = require("./Routes/Student");
 
 // Middlewares
 app.use(cors());
-app.use(bodyParser.json());
-
+app.use(bodyParser.json({ limit: '30mb' }));
 // // Setting Routes
 app.use("/admin", CollegeAdmin);
 app.use("/faculty", Faculty);

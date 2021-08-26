@@ -8,6 +8,11 @@ const FacultyProfile = () => {
   const [values, setvalues] = useState({ error: false, success: false });
   const { error, success } = values;
   const idn = currentUser._id;
+  useEffect(() => {
+    setTimeout(() => {
+      setvalues({ success: false });
+    }, 2000);
+  }, [success]);
   const handleChange = (e) => {
     e.preventDefault();
     axios.put('/faculty/updatefacultyinfo', { _id:idn,username:username, college_name: collegename })

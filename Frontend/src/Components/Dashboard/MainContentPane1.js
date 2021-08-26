@@ -59,7 +59,7 @@ const MainContentPane1 = () => {
                 <AdminAttendance />
               ) : currentSelectedOption === "Admin Classes" ? (
                 <AdminClasses />
-              ) : currentSelectedOption === "Admin Courses" ? (
+              ) : currentSelectedOption === "Admin Add Courses" ? (
                 <AdminCourses />
               ) : currentSelectedOption === "Admin Handle Queries" ? (
                 <AdminHandleQueries />
