@@ -22,7 +22,7 @@ const AdminManageFaculty = () => {
     console.log("Handle Search");
     var value = document.querySelector("#admin-manage-faculty-textfield").value;
     var reg = new RegExp(value, "gi");
-    
+
     setDisplayFacultyData([
       ...facultyData.filter((item) => item.username.match(reg) !== null),
     ]);
@@ -47,10 +47,12 @@ const AdminManageFaculty = () => {
 
   return (
     <div>
-      <h1>Admin Manage Faculty</h1>
-      <div className="admin-data container p-4">
-        <form onSubmit={handleSearch}>
-          <div class="input-group mb-3">
+      <div className="admin-data container">
+        <form
+          onSubmit={handleSearch}
+          className="p-4 align-items-center justify-content-center"
+        >
+          <div class="input-group">
             <input
               id="admin-manage-faculty-textfield"
               type="text"

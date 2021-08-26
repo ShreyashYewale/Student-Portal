@@ -5,11 +5,14 @@ const {
   SignOutAdmin,
   FacultyList,
   StudentList,
-  UpdateStudentInfo,
-  UpdateFacultyInfo,
   UpdateAdminInfo,
+<<<<<<< HEAD
   AddCourses,
   getAllCourses
+=======
+  DeleteStudent,
+  ManageStudentBlocking,
+>>>>>>> 5c04743e02d53d2d1c0648ed97b93610219a4f41
 } = require("../Controllers/CollegeAdmin");
 const routes = express.Router();
 
@@ -29,7 +32,13 @@ routes.get("/facultylist", FacultyList);
 
 routes.get("/studentlist", StudentList);
 
+<<<<<<< HEAD
 routes.post("/addcourses", AddCourses);
 routes.get("/getallcourses",getAllCourses);
+=======
+routes.post("/deletestudent", DeleteStudent);
+
+routes.put("/managestudentblocking", ManageStudentBlocking);
+>>>>>>> 5c04743e02d53d2d1c0648ed97b93610219a4f41
 
 module.exports = routes;

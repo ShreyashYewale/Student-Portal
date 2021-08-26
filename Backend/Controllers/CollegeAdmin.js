@@ -80,6 +80,12 @@ exports.SignOutAdmin = (req, res) => {
   });
 };
 
+// Manage Faculty and Student
+/*
+-----------------
+Faculty
+-----------------
+*/
 exports.FacultyList = (req, res) => {
   Faculty.find(
     {},
@@ -99,20 +105,55 @@ exports.FacultyList = (req, res) => {
   );
 };
 
+/*
+-----------------
+Student
+-----------------
+*/
 exports.StudentList = (req, res) => {
-  Student.find({}, (err, result) => {
+  Student.find(
+    {},
+    "_id username email college_name createdAt updatedAt isBlocked",
+    { sort: { username: 1 } },
+    (err, result) => {
+      if (err) {
+        return res.status(400).json({ error: "Something went wrong!" });
+      }
+
+      if (result.length != 0) {
+        res.json(result);
+      } else {
+        res.json({ msg: "No data found!" });
+      }
+    }
+  );
+};
+
+exports.DeleteStudent = (req, res) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(422).json({
+      error: errors.array()[0].msg,
+    });
+  }
+
+  console.log(req.body);
+
+  Student.deleteOne({ email: req.body.email }, (err, result) => {
     if (err) {
       return res.status(400).json({ error: "Something went wrong!" });
-    }
-
-    if (result.length != 0) {
-      res.json(result);
     } else {
-      res.json({ msg: "No data found!" });
+      if (result.length != 0) {
+        res.json(result);
+      } else {
+        res.json({ msg: "No data found!" });
+      }
     }
   });
 };
 
+<<<<<<< HEAD
 exports.AddCourses = (req, res) => {
   const errors = validationResult(req);
 
@@ -143,3 +184,30 @@ exports.getAllCourses = (req, res) => {
      }
    });
 }
+=======
+exports.ManageStudentBlocking = (req, res) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(422).json({
+      error: errors.array()[0].msg,
+    });
+  }
+
+  Student.updateOne(
+    { email: req.body.email },
+    { $set: { isBlocked: req.body.setIsBlocked } },
+    (err, result) => {
+      if (err) {
+        return res.status(400).json({ error: "Something went wrong!" });
+      } else {
+        if (result.length != 0) {
+          res.json(result);
+        } else {
+          res.json({ msg: "No data found!" });
+        }
+      }
+    }
+  );
+};
+>>>>>>> 5c04743e02d53d2d1c0648ed97b93610219a4f41

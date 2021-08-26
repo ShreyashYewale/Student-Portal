@@ -14,13 +14,13 @@ const Grouppage = () => {
 
   useEffect(() => {
     console.log("Hello");
-    if (!currentUser.isLogin) {
-      history.push("/signin/");
-    } else {
-      setTimeout(() => {
-        setIsLoading(true);
-      }, 1000);
-    }
+    // if (!currentUser.isLogin) {
+    //   history.push("/signin/");
+    // } else {
+    setTimeout(() => {
+      setIsLoading(true);
+    }, 1000);
+    // }
   }, []);
 
   return (
