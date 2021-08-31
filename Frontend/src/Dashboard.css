@@ -57,11 +57,15 @@
   flex: 1;
 }
 
-/* Admin Classes */
-
-/* .admin-classes-card-img-container img {
-  transition: all 0.3s ease-in-out;
+/* Admin Create Feedback Form */
+.feedback-question {
+  margin-bottom: 10px;
 }
-.admin-classes-card-img-container:hover img {
-  transform: scale(1.01);
-} */
+
+.options {
+  margin-left: 40px;
+}
+
+.options input {
+  margin-bottom: 5px;
+}

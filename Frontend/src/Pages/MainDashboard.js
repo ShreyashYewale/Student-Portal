@@ -18,6 +18,7 @@ const MainDashboard = () => {
   const handleLogout = () => {
     console.log("Request For Logout");
     setcurrentUser({ isLogin: false });
+    localStorage.removeItem("logindata");
     history.entries = [];
     history.index = -1;
     history.push("/");
@@ -25,8 +26,18 @@ const MainDashboard = () => {
 
   useEffect(() => {
     if (!currentUser.isLogin) {
-      history.push("/signin/");
+      if (localStorage.getItem("logindata") !== null) {
+        setcurrentUser(JSON.parse(localStorage.getItem("logindata")));
+        setTimeout(() => {
+          setLoading(true);
+        }, 1000);
+      } else {
+        history.push("/signin/");
+        console.log("User Not Found..!");
+      }
     } else {
+      localStorage.clear();
+      localStorage.setItem("logindata", JSON.stringify(currentUser));
       setTimeout(() => {
         setLoading(true);
       }, 1000);

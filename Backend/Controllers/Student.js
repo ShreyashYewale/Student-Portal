@@ -1,5 +1,6 @@
 const { check, validationResult } = require("express-validator");
 const Student = require("../Models/Student");
+const Classes = require("../Models/Classes");
 const jwt = require("jsonwebtoken");
 const expressJwt = require("express-jwt");
 
@@ -50,6 +51,108 @@ exports.DeleteAccount = (req, res) => {
 
 exports.UpdateStudentInfo = (req, res) => {
   res.json({ msg: "Update Student Info" });
+};
+
+exports.StudentGetClasses = (req, res) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(422).json({
+      error: errors.array()[0].msg,
+    });
+  }
+
+  Student.findOne(
+    { _id: req.body._id },
+    "_id username classes",
+    (err, result) => {
+      if (err) {
+        res.status(200).json({ msg: "Something Went Wrong", err });
+      } else {
+        if (result === null) {
+          res.json({ msg: "Student not found..!" });
+        } else {
+          res.json({ msg: "Found", result });
+        }
+      }
+    }
+  );
+};
+
+exports.StudentAddClasses = (req, res) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(422).json({
+      error: errors.array()[0].msg,
+    });
+  }
+
+  // find is class is exist or not
+  Classes.findOne(
+    { class_id: req.body.class_id },
+    "_id class_id class_name class_desc class_image faculty",
+    (err, result) => {
+      if (err) {
+        res.status(200).json({ msg: "Something Went Wrong", err });
+      }
+
+      if (result === null) {
+        res.json({ isDone: false, msg: "Class Not Exists" });
+      } else {
+        // find class is added into student or not
+        Student.findOne(
+          { _id: req.body.student_id },
+          "_id username classes",
+          (classerr, classresult) => {
+            if (classerr) {
+              res.status(200).json({ msg: "Something Went Wrong", err });
+            }
+            if (classresult === null) {
+              res.json({
+                isDone: false,
+                msg: "Student Not Found",
+              });
+            } else {
+              var isFound = false;
+              classresult.classes.map((classitem) => {
+                if (classitem.class_id === req.body.class_id) {
+                  isFound = true;
+                }
+              });
+
+              if (isFound) {
+                res.json({
+                  isDone: false,
+                  msg: "Class Already Added",
+                  result,
+                });
+              } else {
+                // add class into student
+                Student.updateOne(
+                  { _id: req.body.student_id },
+                  { $push: { classes: result } },
+                  (updateerr, updateresult) => {
+                    if (updateerr) {
+                      res
+                        .status(200)
+                        .json({ msg: "Something Went Wrong", err });
+                    }
+
+                    res.json({
+                      isDone: true,
+                      msg: "Class Added Successfully..!",
+                      updateresult,
+                    });
+                  }
+                );
+              }
+            }
+          }
+        );
+      }
+    }
+  );
 };
 
 exports.SignInStudent = (req, res) => {

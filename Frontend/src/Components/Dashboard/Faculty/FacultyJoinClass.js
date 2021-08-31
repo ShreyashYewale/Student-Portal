@@ -1,12 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { AppContext } from "../../../Context/Context";
 const axios = require("axios");
-const AdminClasses = () => {
+
+export default function FacultyJoinClass() {
+  const { currentUser } = useContext(AppContext);
+
   const [displayClassesData, setDisplayClassesData] = useState([]);
   const [classesData, setClassesData] = useState([]);
 
   useEffect(() => {
     axios
-      .get("/classes/")
+      .post("/faculty/getclasses", {
+        _id: currentUser._id,
+      })
       .then((result) => {
         const { data } = result;
         console.log(data);
@@ -29,7 +35,7 @@ const AdminClasses = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    var value = document.querySelector("#admin-classes-textfield").value;
+    var value = document.querySelector("#faculty-classes-textfield").value;
     var reg = new RegExp(value, "gi");
 
     setDisplayClassesData([
@@ -46,7 +52,7 @@ const AdminClasses = () => {
         >
           <div class="input-group">
             <input
-              id="admin-classes-textfield"
+              id="faculty-classes-textfield"
               type="text"
               class="form-control"
               placeholder="Class Name"
@@ -95,6 +101,4 @@ const AdminClasses = () => {
       </div>
     </div>
   );
-};
-
-export default AdminClasses;
+}

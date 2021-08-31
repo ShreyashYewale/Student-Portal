@@ -47,17 +47,27 @@ const StudentSchema = new mongoose.Schema(
       {
         class_id: {
           type: String,
-
           maxlength: 10,
         },
         class_name: {
           type: String,
-
           maxlength: 20,
         },
-        faculty_name: {
-          type: String,
-          maxlength: 30,
+        class_desc: { type: String, required: true },
+        class_image: { type: String, required: true },
+        faculty: {
+          faculty_id: {
+            type: String,
+            required: true,
+          },
+          username: {
+            type: String,
+            required: true,
+          },
+          email: {
+            type: String,
+            required: true,
+          },
         },
       },
     ],

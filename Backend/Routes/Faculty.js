@@ -7,6 +7,7 @@ const {
   SignOutFaculty,
   StudentsList,
   UpdateFacultyInfo,
+  FacultyClassList,
 } = require("../Controllers/Faculty");
 const routes = express.Router();
 
@@ -29,6 +30,8 @@ routes.post("/createaccount", CreateAccount);
 routes.post("/deleteaccount", DeleteAccount);
 
 routes.put("/updatefacultyinfo", UpdateFacultyInfo);
+
+routes.post("/getclasses", FacultyClassList);
 
 routes.post("/signin", SignInFaculty);
 

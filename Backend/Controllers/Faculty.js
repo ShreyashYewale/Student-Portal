@@ -1,6 +1,7 @@
 const { validationResult } = require("express-validator");
 const Faculty = require("../Models/Faculty");
 const Student = require("../Models/Student");
+const Classes = require("../Models/Classes");
 const jwt = require("jsonwebtoken");
 
 exports.CreateAccount = (req, res) => {
@@ -100,6 +101,32 @@ exports.SignInFaculty = (req, res) => {
     const { _id, username, email, college_name } = user;
     return res.json({ token, user: { _id, username, email, college_name } });
   });
+};
+
+exports.FacultyClassList = (req, res) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(422).json({
+      error: errors.array()[0].msg,
+    });
+  }
+
+  Classes.find(
+    {},
+    "_id class_id class_name class_desc class_image faculty",
+    (err, result) => {
+      if (err) {
+        return res.status(400).json({ error: "Something went wrong!" });
+      }
+
+      console.log(req.body);
+      result = result.filter(
+        (item) => item.faculty.faculty_id === req.body._id
+      );
+      res.json(result);
+    }
+  );
 };
 
 exports.SignOutFaculty = (req, res) => {
