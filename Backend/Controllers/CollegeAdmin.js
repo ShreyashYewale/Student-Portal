@@ -189,16 +189,12 @@ exports.getAllQueries = (req, res) => {
   Query.find({}, (err, result) => {
     if (err) {
       return res.status(400).json({ error: 'Something went wrong!' });
-  Course.find({}, (err, result) => {
-    if (err) {
-      return res.status(400).json({ error: "Something went wrong!" });
     }
 
     if (result.length != 0) {
       res.json(result);
     } else {
       res.json({ msg: 'No data found!' });
-      res.json({ msg: "No data found!" });
     }
   });
 };

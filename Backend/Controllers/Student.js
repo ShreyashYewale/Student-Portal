@@ -3,11 +3,7 @@ const Student = require('../Models/Student');
 const Query = require('../Models/Queries');
 const jwt = require('jsonwebtoken');
 const expressJwt = require('express-jwt');
-const { check, validationResult } = require("express-validator");
-const Student = require("../Models/Student");
 const Classes = require("../Models/Classes");
-const jwt = require("jsonwebtoken");
-const expressJwt = require("express-jwt");
 
 exports.CreateAccount = (req, res) => {
   const errors = validationResult(req);
@@ -60,8 +56,7 @@ exports.UpdateStudentInfo = (req, res) => {
 
 /*Submit Query*/
 exports.SubmitQuery = (req, res) => {
-  const { queries } = req.body;
-  const query = new Query({ queries });
+  const query = new Query(req.body);
   query.save((err, result) => {
     if (err) {
       return res.json(err);
