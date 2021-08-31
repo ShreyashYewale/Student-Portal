@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Content from "../Components/GroupPage/Content";
-import Navbar from "../Components/GroupPage/Navbar";
+import Navbar1 from "../Components/Dashboard/Navbar1";
 
 // Context
 import { GroupContext, AppContext } from "../Context/Context";
@@ -31,7 +31,7 @@ const Grouppage = () => {
             value={{ currentSelectedOption, setCurrentSelectedOption }}
           >
             <div style={{ height: "75px" }}></div>
-            <Navbar />
+            <Navbar1/>
             <Content />
           </GroupContext.Provider>
         </div>

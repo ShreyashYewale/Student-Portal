@@ -26,14 +26,16 @@ mongoose
 const CollegeAdmin = require("./Routes/CollegeAdmin");
 const Faculty = require("./Routes/Faculty");
 const Student = require("./Routes/Student");
+const Classes = require("./Routes/Classes");
 
 // Middlewares
 app.use(cors());
-app.use(bodyParser.json({ limit: '30mb' }));
+app.use(bodyParser.json({ limit: "30mb" }));
 // // Setting Routes
 app.use("/admin", CollegeAdmin);
 app.use("/faculty", Faculty);
 app.use("/student", Student);
+app.use("/classes", Classes);
 
 // Base Route
 app.get("/", (req, res) => {

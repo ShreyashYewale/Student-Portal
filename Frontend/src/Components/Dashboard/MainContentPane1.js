@@ -27,6 +27,8 @@ import StudentQueries from "./Student/StudentQueries";
 import StudentCourses from "./Student/StudentCourses";
 import StudentAttendance from "./Student/StudentAttendance";
 import StudentFeedback from "./Student/StudentFeedback";
+import FacultyJoinClass from "./Faculty/FacultyJoinClass";
+import AdminCreateFeedback from "./Admin/AdminCreateFeedback";
 const MainContentPane1 = () => {
   const { currentSelectedOption } = useContext(DashboardContext);
   const { currentUser } = useContext(AppContext);
@@ -63,6 +65,8 @@ const MainContentPane1 = () => {
                 <AdminCourses />
               ) : currentSelectedOption === "Admin Handle Queries" ? (
                 <AdminHandleQueries />
+              ) : currentSelectedOption === "Admin Create Feedback" ? (
+                <AdminCreateFeedback />
               ) : (
                 "Admin Invalid Item Selected"
               )}
@@ -75,6 +79,8 @@ const MainContentPane1 = () => {
                 <FacultyProfile />
               ) : currentSelectedOption === "Faculty Classes" ? (
                 <FacultyClasses />
+              ) : currentSelectedOption === "Faculty Manage Classes" ? (
+                <FacultyJoinClass />
               ) : currentSelectedOption === "Faculty Queries" ? (
                 <FacultyQueries />
               ) : currentSelectedOption === "Faculty Courses" ? (

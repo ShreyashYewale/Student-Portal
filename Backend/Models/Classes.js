@@ -1,16 +1,30 @@
 const mongoose = require("mongoose");
 
-const ClassesSchema = new mongoose.Schema([
+const ClassesSchema = new mongoose.Schema(
   {
-    // TODO: faculty_name: who have created the class
-    class_id: { type: Number, required: true, unique: true, maxlength: 20 },
-    class_name: { type: String, required: true, maxlength: 20 },
-    asignments: [
+    class_id: { type: String, required: true, maxlength: 20 },
+    class_name: { type: String, unique: true, required: true, maxlength: 20 },
+    class_desc: { type: String, required: true },
+    class_image: { type: String, required: true },
+    faculty: {
+      faculty_id: {
+        type: String,
+        required: true,
+      },
+      username: {
+        type: String,
+        required: true,
+      },
+      email: {
+        type: String,
+        required: true,
+      },
+    },
+    assignments: [
       {
         assignment_no: {
-          type: Number,
+          type: String,
           required: true,
-          unique: true,
           maxlength: 20,
         },
         assignment_name: { type: String, required: true, maxlength: 20 },
@@ -20,7 +34,6 @@ const ClassesSchema = new mongoose.Schema([
             student_email: {
               type: String,
               required: true,
-              unique: true,
               maxlength: 30,
             },
             document_name: { type: String, required: true, maxlength: 30 },
@@ -29,13 +42,27 @@ const ClassesSchema = new mongoose.Schema([
         ],
       },
     ],
-    // TODO: add students joined list
+    students: [
+      {
+        student_id: {
+          type: String,
+          required: true,
+        },
+        username: {
+          type: String,
+          required: true,
+        },
+        email: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
     discussion: [
       {
         message_id: {
           type: Number,
           required: true,
-          unique: true,
           maxlength: 30,
         },
         sender: { type: String, required: true, maxlength: 30 },
@@ -43,6 +70,7 @@ const ClassesSchema = new mongoose.Schema([
       },
     ],
   },
-]);
+  { timestamps: true }
+);
 
 module.exports = mongoose.model("ClassesSchema", ClassesSchema);

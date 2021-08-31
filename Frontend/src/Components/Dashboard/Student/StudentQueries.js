@@ -48,7 +48,9 @@ const StudentQueries = () => {
     e.preventDefault();
     axios
       .post('/student/submitquery', {
-        queries: query
+        queries: query,
+        email:currentUser.email,
+        role:currentUser.role
       })
       .then((req, res) => {
         setvalues({ success: true, error: false });

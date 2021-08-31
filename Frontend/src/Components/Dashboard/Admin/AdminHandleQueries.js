@@ -62,7 +62,7 @@ const AdminHandleQueries = () => {
                         fontSize: '16px',
                         fontWeight: 'bold'
                       }}>
-                      Student Name: {currentUser.role}
+                      Student Name: {item.role}
                     </span>
                     <br></br>
                     <span
@@ -71,7 +71,7 @@ const AdminHandleQueries = () => {
                         fontSize: '16px',
                         fontWeight: 'bold'
                       }}>
-                      Student Email: {currentUser.email}
+                      Student Email: {item.email}
                     </span>
                   </div>
                 </li>
