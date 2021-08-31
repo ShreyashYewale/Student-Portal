@@ -9,13 +9,9 @@ const Footer = () => {
             <div className="col-md-6 align-content-center justify-content-between">
               <div className="h3">Contact</div>
               <p className="lead px-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Doloremque, error rem dolorum ipsa commodi sit dolor maxime eius
-                hic consequuntur laborum dicta perspiciatis temporibus
-                exercitationem quis. Ut veniam perferendis molestiae. Lorem
-                ipsum dolor, sit amet consectetur adipisicing elit. Ab saepe
-                deleniti cumque dicta sapiente asperiores doloribus sequi
-                facilis voluptatem esse?
+                Sanket Salunke-1234567890<br></br>
+                <br></br>
+                Shreyash Yewale-1234567890<br></br>
               </p>
             </div>
             <div className="col-md-6 mt-md-0 mt-5">

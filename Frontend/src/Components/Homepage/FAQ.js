@@ -88,7 +88,7 @@ const FAQ = () => {
                 aria-expanded='false'
                 aria-controls='flush-collapseThree'>
                 <h6 className='text-center mt-3 mb-2'>
-                  What is the use of this platform?
+                 How this platform will benefit Students?
                 </h6>
               </button>
             </h2>
@@ -98,12 +98,8 @@ const FAQ = () => {
               aria-labelledby='flush-headingThree'
               data-bs-parent='#accordionFlushExample'>
               <div className='accordion-body'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestiae, dolore unde! Eligendi veritatis nisi vitae,
-                laudantium dolores suscipit aliquam nesciunt iusto aut quia
-                praesentium cum similique molestias repellendus sit quaerat at?
-                Pariatur ea perferendis aspernatur quo tempore voluptatibus
-                ipsam voluptatum?
+                Through this portal Students can connect to their teachers
+                and attend their classes and can track their academics through it.
               </div>
             </div>
           </div>
@@ -117,7 +113,7 @@ const FAQ = () => {
                 aria-expanded='false'
                 aria-controls='flush-collapseFour'>
                 <h6 className='text-center mt-3 mb-2'>
-                  What is the use of this platform?
+                  Can Students and teachers create their own accounts for the portal?
                 </h6>
               </button>
             </h2>
@@ -127,14 +123,8 @@ const FAQ = () => {
               aria-labelledby='flush-headingFour'
               data-bs-parent='#accordionFlushExample'>
               <div className='accordion-body'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
-                qui voluptatibus et doloremque, repudiandae veritatis
-                praesentium corporis accusamus quibusdam! Libero qui explicabo
-                id distinctio iure dolores quae unde similique delectus. Ducimus
-                repudiandae ab adipisci ratione nihil vitae dolorem minima
-                tempora deserunt ullam consequatur, fuga saepe quae cum
-                molestiae eveniet quibusdam et cupiditate nostrum nam, dicta
-                delectus sequi consectetur? Repudiandae, eum?
+                Sorry,but Students and teachers cannot create accounts.Instead Admin of College
+                can create accounts for students and teachers respectively.
               </div>
             </div>
           </div>
@@ -149,7 +139,7 @@ const FAQ = () => {
                 aria-expanded='false'
                 aria-controls='flush-collapseFive'>
                 <h6 className='text-center mt-3 mb-2'>
-                  What is the use of this platform?
+                 How many Admins can be there for a College?
                 </h6>
               </button>
             </h2>
@@ -159,9 +149,7 @@ const FAQ = () => {
               aria-labelledby='flush-headingFive'
               data-bs-parent='#accordionFlushExample'>
               <div className='accordion-body'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-                libero placeat asperiores eum. Suscipit non sunt facilis sint
-                accusantium amet?
+               There can be only <b>One</b> Admin for a College.
               </div>
             </div>
           </div>

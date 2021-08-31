@@ -6,14 +6,20 @@ const AdminCourses = () => {
   const [values, setvalues] = useState({
     name: '',
     description: '',
-    link: ''
+    link: '',
+    error:false,
+    success:false
   });
-  const { name, description, link,photo} = values;
+  const { name, description, link,photo,error, success} = values;
 
  const handleChange = (name) => (event) => {
    setvalues({ ...values, [name]: event.target.value });
  };
-
+useEffect(() => {
+  setTimeout(() => {
+    setvalues({ success: false, error: false });
+  }, 2000);
+}, [success, error]);
   const onFormSubmit = (event) => {
     event.preventDefault();
     axios
@@ -24,13 +30,47 @@ const AdminCourses = () => {
         photo: photo,
       })
       .then((req, res) => {
-        console.log(name);
+        
+        setvalues({success:true})
       })
       .catch((err) => {
-        console.log(description);
-        console.log('Error');
+         setvalues({error:true})
       });
   }
+  const errorMessage = () => {
+    return (
+      <div className='row '>
+        <div
+          className='alert alert-danger mt-2 col-md-6 offset-sm-3'
+          style={{
+            display: error ? '' : 'none',
+            fontSize: '12',
+            height: '55px',
+            textAlign: 'center'
+          }}>
+          <h6>Course Not Added.</h6>
+        </div>
+      </div>
+    );
+  };
+  const successMessage = () => {
+    return (
+      <div className='row '>
+        <div className='col-md-6 offset-sm-2 mt-2'>
+          <div
+            className='alert alert-success'
+            style={{
+              display: success ? '' : 'none',
+              fontSize: '12',
+              width: '450px',
+              height: '55px'
+            }}>
+            <h6>Course Added Successfully</h6>
+          </div>
+        </div>
+      </div>
+    );
+  };
   return (
     <div>
       <div className='align-items-center justify-content-between'>
@@ -43,6 +83,8 @@ const AdminCourses = () => {
           }}>
           <h3>Add New Course Here</h3>
         </div>
+        {successMessage()}
+        {errorMessage()}
         <form onSubmit={onFormSubmit}>
           <div className='container-2' style={{ marginTop: '20px' }}>
             <div
@@ -53,7 +95,7 @@ const AdminCourses = () => {
                 justifyContent: 'center'
               }}>
               <input
-                className='form-control form-control-lg mt-4'
+                className='form-control form-control-lg mt-2'
                 type='text'
                 required
                 placeholder='Title of Course'

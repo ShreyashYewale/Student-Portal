@@ -5,6 +5,7 @@ const {
   SignInStudent,
   SignOutStudent,
   UpdateStudentInfo,
+  SubmitQuery
 } = require("../Controllers/Student");
 const routes = express.Router();
 
@@ -21,5 +22,6 @@ routes.post("/updatestudentinfo", UpdateStudentInfo);
 routes.post("/signin", SignInStudent);
 
 routes.get("/signout", SignOutStudent);
+routes.post("/submitquery", SubmitQuery);
 
 module.exports = routes;

@@ -2,7 +2,8 @@ const { validationResult } = require("express-validator");
 const Admin = require("../Models/CollegeAdmin");
 const Faculty = require("../Models/Faculty");
 const Student = require("../Models/Student");
-const Course=require("../Models/Courses");
+const Course = require("../Models/Courses");
+const Query=require("../Models/Queries");
 const jwt = require("jsonwebtoken");
 
 exports.CreateAccount = (req, res) => {
@@ -153,7 +154,6 @@ exports.DeleteStudent = (req, res) => {
   });
 };
 
-<<<<<<< HEAD
 exports.AddCourses = (req, res) => {
   const errors = validationResult(req);
 
@@ -184,7 +184,20 @@ exports.getAllCourses = (req, res) => {
      }
    });
 }
-=======
+
+exports.getAllQueries = (req, res) => {
+  Query.find({}, (err, result) => {
+    if (err) {
+      return res.status(400).json({ error: 'Something went wrong!' });
+    }
+
+    if (result.length != 0) {
+      res.json(result);
+    } else {
+      res.json({ msg: 'No data found!' });
+    }
+  });
+};
 exports.ManageStudentBlocking = (req, res) => {
   const errors = validationResult(req);
 
@@ -210,4 +223,3 @@ exports.ManageStudentBlocking = (req, res) => {
     }
   );
 };
->>>>>>> 5c04743e02d53d2d1c0648ed97b93610219a4f41

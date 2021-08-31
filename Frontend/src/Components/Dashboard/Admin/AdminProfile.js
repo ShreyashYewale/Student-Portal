@@ -9,9 +9,9 @@ const AdminProfile = () => {
   const { error, success } = values;
   useEffect(() => {
     setTimeout(() => {
-      setvalues({ success: false });
+      setvalues({ success: false,error: false});
     }, 2000);
-  }, [success]);
+  }, [success,error]);
   const idn = currentUser._id;
   const handleChange = (e) => {
     e.preventDefault();

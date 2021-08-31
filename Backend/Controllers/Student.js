@@ -1,7 +1,8 @@
-const { check, validationResult } = require("express-validator");
-const Student = require("../Models/Student");
-const jwt = require("jsonwebtoken");
-const expressJwt = require("express-jwt");
+const { check, validationResult } = require('express-validator');
+const Student = require('../Models/Student');
+const Query=require('../Models/Queries');
+const jwt = require('jsonwebtoken');
+const expressJwt = require('express-jwt');
 
 exports.CreateAccount = (req, res) => {
   const errors = validationResult(req);
@@ -14,7 +15,7 @@ exports.CreateAccount = (req, res) => {
 
   student.save((err, result) => {
     if (err) {
-      return res.status(400).json({ err: "NOT able to save user in DB" });
+      return res.status(400).json({ err: 'NOT able to save user in DB' });
     }
     res.json(result);
   });
@@ -32,25 +33,40 @@ exports.DeleteAccount = (req, res) => {
   Student.findOne({ email }, (err, user) => {
     if (err || !user) {
       return res.status(400).json({
-        error: "USER email does not exists",
+        error: 'USER email does not exists'
       });
     }
 
     Student.remove({ email }, (err, result) => {
       if (err || !result) {
         return res.status(400).json({
-          error: "Failed to delete account",
+          error: 'Failed to delete account'
         });
       }
 
-      res.json({ msg: "Account Deleted Successfully!", result });
+      res.json({ msg: 'Account Deleted Successfully!', result });
     });
   });
 };
 
 exports.UpdateStudentInfo = (req, res) => {
-  res.json({ msg: "Update Student Info" });
+  res.json({ msg: 'Update Student Info' });
 };
+
+/*Submit Query*/
+exports.SubmitQuery = (req, res) => {
+  const { queries } = req.body;
+  const query = new Query({ queries })
+  query.save((err, result) => {
+    if (err) {
+
+      return res.json(err);
+    }
+    res.json(result);
+  });
+};
+
+
 
 exports.SignInStudent = (req, res) => {
   const errors = validationResult(req);
@@ -58,21 +74,21 @@ exports.SignInStudent = (req, res) => {
 
   if (!errors.isEmpty()) {
     return res.status(422).json({
-      error: errors.array()[0].msg,
+      error: errors.array()[0].msg
     });
   }
 
   Student.findOne({ email, password }, (err, user) => {
     if (err || !user) {
       return res.status(400).json({
-        error: "USER email does not exists",
+        error: 'USER email does not exists'
       });
     }
 
     //create token
     const token = jwt.sign({ _id: user._id }, process.env.SECRET);
     //put token in cookie
-    res.cookie("token", token, { expire: new Date() + 9999 });
+    res.cookie('token', token, { expire: new Date() + 9999 });
 
     //send response to front end
     const { _id, username, email, college_name } = user;
@@ -81,8 +97,8 @@ exports.SignInStudent = (req, res) => {
 };
 
 exports.SignOutStudent = (req, res) => {
-  res.clearCookie("token");
+  res.clearCookie('token');
   res.json({
-    message: "User Signout Successfully",
+    message: 'User Signout Successfully'
   });
 };
