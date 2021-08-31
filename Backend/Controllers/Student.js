@@ -1,6 +1,6 @@
 const { check, validationResult } = require('express-validator');
 const Student = require('../Models/Student');
-const Query=require('../Models/Queries');
+const Query = require('../Models/Queries');
 const jwt = require('jsonwebtoken');
 const expressJwt = require('express-jwt');
 
@@ -56,17 +56,14 @@ exports.UpdateStudentInfo = (req, res) => {
 /*Submit Query*/
 exports.SubmitQuery = (req, res) => {
   const { queries } = req.body;
-  const query = new Query({ queries })
+  const query = new Query({ queries });
   query.save((err, result) => {
     if (err) {
-
       return res.json(err);
     }
     res.json(result);
   });
 };
-
-
 
 exports.SignInStudent = (req, res) => {
   const errors = validationResult(req);
