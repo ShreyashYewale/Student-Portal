@@ -273,17 +273,18 @@ const SignIn = () => {
                     marginTop: 40,
                   }}
                 >
-                  Create Account
+                 Login
                 </button>
                 <div className="mt-3">
                   <a
+                    href="/signup"
                     className="text-white p-3"
                     style={{
                       left: "80%",
                       textAlign: "center",
                     }}
                   >
-                    Already Registered?
+                    New User?
                   </a>
                   <a
                     style={{
@@ -291,9 +292,9 @@ const SignIn = () => {
                       paddingBottom: "2px",
                       borderBottom: "1px solid #d9c2ff",
                     }}
-                    href="/signin"
+                    href="/signup"
                   >
-                    Sign In Here
+                    Sign Up Here
                   </a>
                 </div>
               </form>

@@ -30,7 +30,6 @@ useEffect(() => {
         photo: photo,
       })
       .then((req, res) => {
-        
         setvalues({success:true})
       })
       .catch((err) => {
